@@ -1,8 +1,10 @@
 import os
+from django.shortcuts import render_to_response
 from django.template.loader import get_template
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import auth
 from .models import Job
 from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
@@ -30,6 +32,20 @@ def showjob(request, slug):
 			return HttpResponse(html)
 	except:
 		return redirect('/')
+
+def login(request):
+	if request.user.is_authenticated():
+		return HttpResponseRedirect('/')
+
+	username = request.POST.get('username', '')
+	password = request.POST.get('password', '')
+	user = auth.authenticate(username=username, password=password)
+
+	if user is not None and user.is_active:
+		auth.login(request, user) # maintain the state of login
+		return HttpResponseRedirect('/')
+	else:
+		return render_to_response('login.html')
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):

@@ -22,6 +22,7 @@ import mainsite
 urlpatterns = [
 	url(r'^$', homepage),
 	url(r'^job/(\w+)$', showjob),
+    url(r'^login/$', login),
 	url(r'^mainsite/', include('mainsite.urls')),
     url(r'^admin/', admin.site.urls),
 ]
