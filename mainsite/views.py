@@ -11,7 +11,7 @@ from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 line_bot_api = LineBotApi(os.getenv('ChannelAccessToken'))
-parser = WebhookHandler(os.getenv('ChannelSecret'))
+handler = WebhookHandler(os.getenv('ChannelSecret'))
 
 # Create your views here.
 def homepage(request):
