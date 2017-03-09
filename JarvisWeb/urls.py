@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from mainsite.views import homepage, showjob
+from django.conf.urls import include
 import mainsite
 
 urlpatterns = [
