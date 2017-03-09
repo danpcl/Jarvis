@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from mainsite.views import homepage, showjob
+from mainsite.views import homepage, showjob, login
 from django.conf.urls import include
 import mainsite
 
