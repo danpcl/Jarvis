@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from mainsite.views import homepage, showjob
+import mainsite
 
 urlpatterns = [
+	url(r'^$', homepage),
+	url(r'^job/(\w+)$', showjob),
+	#url(r'^mainsite/', include('mainsite.urls')),
     url(r'^admin/', admin.site.urls),
 ]
